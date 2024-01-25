@@ -19,8 +19,6 @@ const Register = () => {
           </div>
           <p className="mt-3 text-center text-gray-500 font-medium">Already have an account? <Link to="/login" className="underline font-bold text-blue-600">Login</Link></p>
           <button type="button" className="py-2 px-5 mb-4 mt-8 overflow-hidden shadow-lg border-2 rounded-md border-dashed border-[#0095ff] before:block before:absolute before:translate-x-full before:inset-0 before:bg-[#0095ff] before:hover:translate-x-0  before:duration-300 before:rounded-s-full before:-z-10 after:-z-10 after:rounded-e-full after:duration-300 after:hover:translate-x-0 after:block after:absolute after:-translate-x-full after:inset-0 after:bg-[#0095ff] relative inline-block hover:text-white z-50">Submit</button>
-
-       
         </form>
       </div>
     </div>

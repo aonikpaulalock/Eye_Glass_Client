@@ -7,6 +7,14 @@ import Register from "../pages/User/Register";
 export const router = createBrowserRouter([
   {
     path: "/",
+    element: <App />
+  },
+  {
+    path: "/register",
     element: <Register />
-  }
+  },
+  {
+    path: "/login",
+    element: <Login />
+  },
 ]);
