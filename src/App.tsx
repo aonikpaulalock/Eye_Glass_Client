@@ -1,7 +1,9 @@
+import MainLayout from "./components/layout/MainLayout"
+
 function App() {
   return (
     <>
-      <h1>This is React Redux Assiment</h1>
+      <MainLayout />
     </>
   )
 }

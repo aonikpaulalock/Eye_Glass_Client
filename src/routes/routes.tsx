@@ -4,10 +4,13 @@ import {
 import App from "../App";
 import Login from "../pages/User/Login";
 import Register from "../pages/User/Register";
+import { routesGenerators } from "../utils/routesGenerators";
+import { userPath } from "./user.routes";
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />
+    element: <App />,
+    children: routesGenerators(userPath)
   },
   {
     path: "/register",
