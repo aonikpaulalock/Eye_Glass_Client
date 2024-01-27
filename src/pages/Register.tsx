@@ -1,32 +1,55 @@
-import image from "../../assets/images/login.jpg"
+import image from "../assets/images/login.jpg"
+import { FieldValues} from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import FormInput from "../../components/form/FormInput";
-import ProvideForm from "../../components/form/ProvideForm";
-import { FieldValues } from "react-hook-form";
-import Loading from "../../utils/Loading";
-import { useRegisterUserMutation } from "../../redux/features/user/userApi";
+import { toast } from "sonner";
+import { useAppDispatch } from "../redux/hooks";
+import { setRegister } from "../redux/features/register/registerSlice";
+import { useRegisterMutation } from "../redux/features/register/registerApi";
+import ProvideForm from "../components/Form/ProvideForm";
+import FormInput from "../components/Form/FormInput";
+
 const Register = () => {
-  const navigate = useNavigate()
-  const [userRegister, { data, isLoading }] = useRegisterUserMutation()
-  console.log(data)
-  if (isLoading) {
-    return <Loading />
-  }
+  const dispatch = useAppDispatch();
+  const [registerUser] = useRegisterMutation();
+  const navigate = useNavigate();
+
   const onSubmit = async (data: FieldValues) => {
+    const toastId = toast.loading("Please wait...");
     try {
+      console.log({ data });
       const userInfo = {
         name: data.name,
         email: data.email,
-        password: data.password
-      }
-      const res = await userRegister(userInfo).unwrap()
-      if (res.success) {
-        navigate(`/login`)
+        password: data.password,
+      };
+
+      dispatch(
+        setRegister({
+          name: data.name,
+          email: data.email,
+          password: data.password,
+        })
+      );
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const res: any = await registerUser(userInfo);
+
+      if (res?.error?.data) {
+        toast.error(`${data.email} Already used`, {
+          id: toastId,
+          duration: 2000,
+        });
+      } else {
+        toast.success("Registration successful!", {
+          id: toastId,
+          duration: 2000,
+        });
+        navigate("/login");
       }
     } catch (error) {
-      console.log(error)
+      toast.error("Something went wrong!", { id: toastId, duration: 2000 });
     }
-  }
+  };
+
   return (
     <div className="w-full h-screen flex justify-center items-center">
       <div className="w-full mx-auto lg:w-[800px] shadow-xl bg-white rounded-md flex text-[#0095ff]">
@@ -45,7 +68,7 @@ const Register = () => {
         </ProvideForm>
       </div>
     </div>
-  )
+  );
 };
 
 export default Register;

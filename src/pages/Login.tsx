@@ -1,43 +1,33 @@
-import { FieldValues } from "react-hook-form";
-import image from "../../assets/images/login.jpg"
-import FormInput from "../../components/form/FormInput";
-import ProvideForm from "../../components/form/ProvideForm";
+import image from "../assets/images/login.jpg"
+import { FieldValues} from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import Loading from "../../utils/Loading";
 import { toast } from "sonner";
-import { verifyToken } from "../../utils/verifyToken";
-import { useAppDispatch } from "../../redux/hooks";
-import { useLoginUserMutation } from "../../redux/features/user/userApi";
-import { TUser, setUser } from "../../redux/features/user/userSlice";
+import { useLoginMutation } from "../redux/features/auth/authApi";
+import { useAppDispatch } from "../redux/hooks";
+import { TUser, setUser } from "../redux/features/auth/authSlice";
+import { verifyToken } from "../utils/verifyToken";
+import ProvideForm from "../components/Form/ProvideForm";
+import FormInput from "../components/Form/FormInput";
+
 const Login = () => {
-  const dispatch = useAppDispatch()
-  const navigate = useNavigate()
-  const [loginUser, { data, isLoading }] = useLoginUserMutation();
-
-
-  console.log(data)
-  if (isLoading) {
-    return <Loading />
-  }
+  const navigate = useNavigate();
+  const [userLogin] = useLoginMutation();
+  const dispatch = useAppDispatch();
 
   const onSubmit = async (data: FieldValues) => {
-    try {
-      const userInfo = {
-        email: data.email,
-        password: data.password
-      }
-      const res = await loginUser(userInfo).unwrap()
-      console.log(res)
-      const user = verifyToken(res.data.accessToken) as TUser;
-      console.log(user)
-      dispatch(setUser({ user, token: res.data.accessToken }))
-      if (res.success) {
-        navigate(`/`)
-      }
-    } catch (error) {
-      toast.error("something went wrong")
-    }
-  }
+    const toastId = toast.loading("Logging in...");
+
+    const userInfo = {
+      email: data.email,
+      password: data.password,
+    };
+    const res = await userLogin(userInfo).unwrap();
+    const user = verifyToken(res.data.accessToken) as TUser;
+    dispatch(setUser({ user, token: res.data.accessToken }));
+    toast.success("Logged in", { id: toastId, duration: 2000 });
+    navigate(`/all-products`);
+  };
+
   return (
     <div className="w-full h-screen flex justify-center items-center">
       <div className="w-full mx-auto lg:w-[800px] shadow-xl bg-white rounded-md flex text-[#0095ff]">
@@ -55,7 +45,7 @@ const Login = () => {
         </ProvideForm>
       </div>
     </div>
-  )
+  );
 };
 
 export default Login;

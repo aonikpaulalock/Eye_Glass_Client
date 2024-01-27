@@ -1,43 +1,33 @@
-import {
-  createBrowserRouter
-} from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import Login from "../pages/User/Login";
-import Register from "../pages/User/Register";
-import AddProduct from "../pages/product/addProduct";
-import ProductList from "../pages/product/ProductList";
-import SalesHistory from "../pages/sales/salesHistory";
-export const router = createBrowserRouter([
-  // {
-  //   path: "/",
-  //   element: <App />,
-  //   children: routesGenerators(userPath)
-  // },
+import Login from "../pages/Login";
+import Register from "../pages/Register";
+import AddGlass from "../pages/dashboard/AddGlass";
+import AllGlasses from "../pages/dashboard/AllGlasses";
+
+const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
       {
         path: "add-product",
-        element: <AddProduct />
+        element: <AddGlass />,
       },
       {
-        path: "product-list",
-        element: <ProductList />
+        path: "all-products",
+        element: <AllGlasses />,
       },
-      {
-        path: "sales-history",
-        element: <SalesHistory />
-      }
-
-    ]
-  },
-  {
-    path: "/register",
-    element: <Register />
+    ],
   },
   {
     path: "/login",
-    element: <Login />
+    element: <Login />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
   },
 ]);
+
+export default router;

@@ -1,13 +1,14 @@
-import DashLay from "./components/layout/DashLay"
-import MainHeader from "./components/layout/MainHeader"
+import MainLayout from "./components/layout/MainLayout";
+import ProtectedRoute from "./components/layout/ProtectedRoute";
 
-function App() {
+const App = () => {
   return (
-    <>
-      <MainHeader />
-      <DashLay />
-    </>
-  )
-}
+    <div>
+      <ProtectedRoute>
+        <MainLayout />
+      </ProtectedRoute>
+    </div>
+  );
+};
 
-export default App
+export default App;
