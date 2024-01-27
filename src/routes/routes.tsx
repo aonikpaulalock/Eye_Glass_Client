@@ -4,13 +4,33 @@ import {
 import App from "../App";
 import Login from "../pages/User/Login";
 import Register from "../pages/User/Register";
-import { routesGenerators } from "../utils/routesGenerators";
-import { userPath } from "./user.routes";
+import AddProduct from "../pages/product/addProduct";
+import ProductList from "../pages/product/ProductList";
+import SalesHistory from "../pages/sales/salesHistory";
 export const router = createBrowserRouter([
+  // {
+  //   path: "/",
+  //   element: <App />,
+  //   children: routesGenerators(userPath)
+  // },
   {
     path: "/",
     element: <App />,
-    children: routesGenerators(userPath)
+    children: [
+      {
+        path: "add-product",
+        element: <AddProduct />
+      },
+      {
+        path: "product-list",
+        element: <ProductList />
+      },
+      {
+        path: "sales-history",
+        element: <SalesHistory />
+      }
+
+    ]
   },
   {
     path: "/register",

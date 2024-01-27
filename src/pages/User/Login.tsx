@@ -4,9 +4,13 @@ import FormInput from "../../components/form/FormInput";
 import ProvideForm from "../../components/form/ProvideForm";
 import { Link, useNavigate } from "react-router-dom";
 import Loading from "../../utils/Loading";
-import { useLoginUserMutation } from "../../redux/user/userApi";
 import { toast } from "sonner";
+import { verifyToken } from "../../utils/verifyToken";
+import { useAppDispatch } from "../../redux/hooks";
+import { useLoginUserMutation } from "../../redux/features/user/userApi";
+import { TUser, setUser } from "../../redux/features/user/userSlice";
 const Login = () => {
+  const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const [loginUser, { data, isLoading }] = useLoginUserMutation();
 
@@ -24,6 +28,9 @@ const Login = () => {
       }
       const res = await loginUser(userInfo).unwrap()
       console.log(res)
+      const user = verifyToken(res.data.accessToken) as TUser;
+      console.log(user)
+      dispatch(setUser({ user, token: res.data.accessToken }))
       if (res.success) {
         navigate(`/`)
       }

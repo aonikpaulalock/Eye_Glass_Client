@@ -3,8 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import FormInput from "../../components/form/FormInput";
 import ProvideForm from "../../components/form/ProvideForm";
 import { FieldValues } from "react-hook-form";
-import { useRegisterUserMutation } from "../../redux/user/userApi";
 import Loading from "../../utils/Loading";
+import { useRegisterUserMutation } from "../../redux/features/user/userApi";
 const Register = () => {
   const navigate = useNavigate()
   const [userRegister, { data, isLoading }] = useRegisterUserMutation()
