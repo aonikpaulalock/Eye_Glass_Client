@@ -59,7 +59,7 @@ const ProductCard: React.FC<
   };
 
   return (
-    <tbody>
+    <tbody className="">
       {eyeGlasses?.data?.map(
         (
           {
@@ -82,19 +82,19 @@ const ProductCard: React.FC<
               <td className={classes}>
                 <Checkbox
                   onClick={() => handleCheckboxClick(_id)}
-                  className="py-2 px-2"
+                  className="py-2"
                   crossOrigin={""}
                   label=""
                 />
               </td>
               <td className={classes}>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2">
                   <img
-                    className="h-8 w-12 rounded-lg object-cover object-center"
+                    className="h-10 w-10 rounded-lg object-cover object-center"
                     src={productImage ? productImage : fallbackImage}
                     alt={productImage}
                   />
-                  <div className="flex flex-col">
+                  <div className="flex flex-col mr-2">
                     <Typography
                       placeholder={""}
                       color="blue-gray"
@@ -111,7 +111,7 @@ const ProductCard: React.FC<
                     placeholder={""}
                     variant="small"
                     color="blue-gray"
-                    className="font-normal"
+                    className="font-normal mr-2"
                   >
                     ${productPrice}
                   </Typography>

@@ -41,7 +41,7 @@ const AllGlasses = () => {
   if (isLoading) {
     return <Loading />
   }
-  
+
   const handleCheckboxClick = (id: string) => {
     if (productsId) {
       const index = productsId.indexOf(id);
@@ -90,19 +90,31 @@ const AllGlasses = () => {
   }
 
   return (
-    <Card placeholder={""} className="h-full w-full">
+    <Card placeholder={""} className="w-full">
+      <h1 className="text-center font-semibold text-2xl">All Eye Glass </h1>
       <CardHeader
         placeholder={""}
         floated={false}
         shadow={false}
-        className="rounded-none "
+        className="rounded-none"
       >
-        <div className="mb-6 mt-4 flex items-center justify-between gap-8">
+        <div className="flex justify-center items-center md:flex-row">
+          <div className="w-full md:w-7/12 mb-4">
+            <Input
+              className="p-5"
+              crossOrigin={""}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              label="Search Glass"
+              icon={<MagnifyingGlassIcon className="h-5 w-5" />}
+            />
+          </div>
+        </div>
+        <div className="mb-6 mt-4 flex items-center justify-between gap-4">
           <div>
             <select
               value={material}
               onChange={(e) => setMaterial(e.target.value)}
-              className="block appearance-none w-36 bg-white border border-gray-200 hover:border-gray-500 px-4 py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline text-sm "
+              className="block appearance-none w-28 bg-white border border-gray-200 hover:border-gray-500 px-4 py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline text-sm "
             >
               <option value="" disabled>
                 Material
@@ -116,7 +128,7 @@ const AllGlasses = () => {
             <select
               value={shape}
               onChange={(e) => setShape(e.target.value)}
-              className="block appearance-none w-36 bg-white border border-gray-200 hover:border-gray-500 px-4 py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline text-sm "
+              className="block appearance-none w-28 bg-white border border-gray-200 hover:border-gray-500 px-4 py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline text-sm "
             >
               <option value="" disabled>
                 Shape
@@ -130,7 +142,7 @@ const AllGlasses = () => {
             <select
               value={lens}
               onChange={(e) => setLens(e.target.value)}
-              className="block appearance-none w-36 bg-white border border-gray-200 hover:border-gray-500 px-4 py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline text-sm "
+              className="block appearance-none w-28 bg-white border border-gray-200 hover:border-gray-500 px-4 py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline text-sm "
             >
               <option value="" disabled>
                 Lens
@@ -144,7 +156,7 @@ const AllGlasses = () => {
             <select
               value={brand}
               onChange={(e) => setBrand(e.target.value)}
-              className="block appearance-none w-36 bg-white border border-gray-200 hover:border-gray-500 px-4 py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline text-sm "
+              className="block appearance-none w-28 bg-white border border-gray-200 hover:border-gray-500 px-4 py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline text-sm "
             >
               <option value="" disabled>
                 Brand
@@ -158,7 +170,7 @@ const AllGlasses = () => {
             <select
               value={gender}
               onChange={(e) => setGender(e.target.value)}
-              className="block appearance-none w-36 bg-white border border-gray-200 hover:border-gray-500 px-4 py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline text-sm "
+              className="block appearance-none w-28 bg-white border border-gray-200 hover:border-gray-500 px-4 py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline text-sm "
             >
               <option value="" disabled>
                 Gender
@@ -171,7 +183,7 @@ const AllGlasses = () => {
             <select
               value={color}
               onChange={(e) => setColor(e.target.value)}
-              className="block appearance-none w-36 bg-white border border-gray-200 hover:border-gray-500 px-4 py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline text-sm "
+              className="block appearance-none w-28 bg-white border border-gray-200 hover:border-gray-500 px-4 py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline text-sm "
             >
               <option value="" disabled>
                 Color
@@ -196,24 +208,9 @@ const AllGlasses = () => {
             />
           </div>
         </div>
-        <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-          <div>
-            <Typography placeholder={""} variant="h4" color="blue-gray">
-              All Glasses
-            </Typography>
-          </div>
-          <div className="w-full md:w-96">
-            <Input
-              crossOrigin={""}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              label="Search Glass"
-              icon={<MagnifyingGlassIcon className="h-5 w-5" />}
-            />
-          </div>
-        </div>
       </CardHeader>
-      <CardBody placeholder={""} className=" px-0 ">
-        <table className="mt-4 w-full min-w-max table-auto text-left">
+      <CardBody placeholder={""} className="overflow-x-auto">
+        <table className="mt-4 w-full min-w-full text-left">
           <thead>
             <tr>
               {TABLE_HEAD.map((head, index) => (
@@ -239,27 +236,6 @@ const AllGlasses = () => {
           />
         </table>
       </CardBody>
-      {/* <CardFooter
-        placeholder={""}
-        className="flex items-center justify-between border-t border-blue-gray-50 p-4"
-      >
-        <Typography
-          placeholder={""}
-          variant="small"
-          color="blue-gray"
-          className="font-normal"
-        >
-          Page 1 of 10
-        </Typography>
-        <div className="flex gap-2">
-          <Button placeholder={""} variant="outlined" size="sm">
-            Previous
-          </Button>
-          <Button placeholder={""} variant="outlined" size="sm">
-            Next
-          </Button>
-        </div>
-      </CardFooter> */}
     </Card>
   );
 };
