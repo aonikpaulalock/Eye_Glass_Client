@@ -1,7 +1,15 @@
-import { Link } from "react-router-dom";
-import { useAppDispatch } from "../../redux/hooks";
+import { NavLink } from "react-router-dom";
 import { toast } from "sonner";
+import { useAppDispatch } from "../../redux/hooks";
 import { logout } from "../../redux/features/auth/authSlice";
+import {
+  Card,
+  Typography,
+  List,
+  ListItem,
+  ListItemPrefix,
+} from "@material-tailwind/react";
+import { PowerIcon } from "@heroicons/react/24/outline";
 
 const Sidebar = () => {
   const dispatch = useAppDispatch();
@@ -12,37 +20,47 @@ const Sidebar = () => {
     toast.success("Logged out", { id: toastId, duration: 2000 });
   };
   return (
-    <div className="bg-gray-800 text-white w-64 flex flex-col justify-between">
-      <div className="p-4">
-        <h2 className="text-xl font-bold mb-4 text-orange-600">
-          EyeGlass Company
-        </h2>
-        <ul className="space-y-2">
-          <Link to="/add-product">
-            <li className="py-2 px-4 hover:bg-gray-700 rounded-md cursor-pointer">
-              Add Glass
-            </li>
-          </Link>
-          <div className="pb-3">
-            <Link to="/all-products">
-              <li className="py-2 px-4 hover:bg-gray-700 rounded-md cursor-pointer">
-                Eye Glasses
-              </li>
-            </Link>
-          </div>
-          <Link to="/sales-history">
-            <li className="py-2 px-4 hover:bg-gray-700 rounded-md cursor-pointer">
-              Sales History
-            </li>
-          </Link>
-        </ul>
+    <Card
+      placeholder={""}
+      className="bg-blue-gray-900 h-screen w-6/12 max-w-[20rem] p-4 rounded-none"
+    >
+      <div className="mb-2 p-4">
+        <Typography placeholder={""} variant="h5" color="white">
+          Eye Glass Management
+        </Typography>
       </div>
-      <div className="p-4 bg-gray-900">
-        <Link onClick={handleLogout} to="/login">
-          <p className="text-xl py-1 px-1 hover:bg-gray-700">Logout</p>
-        </Link>
-      </div>
-    </div>
+      <List placeholder={""}>
+        <ListItem placeholder={""} className="text-white">
+          <NavLink
+            to="/add-product"
+          >
+            Add Glass
+          </NavLink>
+        </ListItem>
+        <ListItem placeholder={""} className="text-white">
+          {" "}
+          <NavLink
+            to="/all-products"
+          >
+            All Glasses
+          </NavLink>
+        </ListItem>
+        <ListItem placeholder={""} className="text-white">
+          {" "}
+          <NavLink
+            to="/sales-history"
+          >
+            Sales History
+          </NavLink>
+        </ListItem>
+        <ListItem onClick={handleLogout} className="text-red-600 mt-10" placeholder={""}>
+          <ListItemPrefix placeholder={""} >
+            <PowerIcon className="h-5 w-5 text-red-600" />
+          </ListItemPrefix>
+          Log Out
+        </ListItem>
+      </List>
+    </Card>
   );
 };
 

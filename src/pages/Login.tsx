@@ -1,5 +1,5 @@
 import image from "../assets/images/login.jpg"
-import { FieldValues} from "react-hook-form";
+import { FieldValues } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { useLoginMutation } from "../redux/features/auth/authApi";
@@ -8,12 +8,15 @@ import { TUser, setUser } from "../redux/features/auth/authSlice";
 import { verifyToken } from "../utils/verifyToken";
 import ProvideForm from "../components/Form/ProvideForm";
 import FormInput from "../components/Form/FormInput";
+import Loading from "../utils/Loading";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [userLogin] = useLoginMutation();
+  const [userLogin, { isLoading }] = useLoginMutation();
   const dispatch = useAppDispatch();
-
+  if (isLoading) {
+    return <Loading />
+  }
   const onSubmit = async (data: FieldValues) => {
     const toastId = toast.loading("Logging in...");
 

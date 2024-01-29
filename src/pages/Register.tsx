@@ -1,5 +1,5 @@
 import image from "../assets/images/login.jpg"
-import { FieldValues} from "react-hook-form";
+import { FieldValues } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { useAppDispatch } from "../redux/hooks";
@@ -7,12 +7,15 @@ import { setRegister } from "../redux/features/register/registerSlice";
 import { useRegisterMutation } from "../redux/features/register/registerApi";
 import ProvideForm from "../components/Form/ProvideForm";
 import FormInput from "../components/Form/FormInput";
+import Loading from "../utils/Loading";
 
 const Register = () => {
   const dispatch = useAppDispatch();
-  const [registerUser] = useRegisterMutation();
+  const [registerUser, { isLoading }] = useRegisterMutation();
   const navigate = useNavigate();
-
+  if (isLoading) {
+    return <Loading />
+  }
   const onSubmit = async (data: FieldValues) => {
     const toastId = toast.loading("Please wait...");
     try {
