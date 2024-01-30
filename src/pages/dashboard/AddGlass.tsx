@@ -176,7 +176,7 @@ const AddGlass = () => {
             type="submit"
             variant="gradient"
             size="sm"
-            color="indigo"
+            color="green"
             placeholder={""}
           >
             Add Glass
