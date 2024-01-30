@@ -47,7 +47,7 @@ const SalesCard = ({ sales }: Tprops) => {
                     <Typography
                       placeholder={""}
                       color="blue-gray"
-                      className="font-normal text-[12px]"
+                      className="font-semibold text-[14px] text-gray-700"
                     >
                       {productId?.productName || "Sold Out"}
                     </Typography>

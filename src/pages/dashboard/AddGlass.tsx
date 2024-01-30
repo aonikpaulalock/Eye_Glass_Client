@@ -67,10 +67,10 @@ const AddGlass = () => {
   };
 
   return (
-    <div className="my-4 mx-10">
-      <h1>Add Glass</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 my-5">
+    <div className="container w-10/12 mx-auto">
+      <form onSubmit={handleSubmit(onSubmit)} className=" shadow-md lg:p-16 md:px-4 md:py-10 rounded-md">
+        <h1 className="text-2xl font-semibold text-center text-gray-700 mb-4">Add Glass</h1>
+        <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 my-5 ">
           <div>
             <Input
               {...register("productName")}

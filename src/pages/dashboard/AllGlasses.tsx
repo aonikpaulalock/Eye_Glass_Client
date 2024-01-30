@@ -90,7 +90,7 @@ const AllGlasses = () => {
   }
 
   return (
-    <Card placeholder={""} className="w-full">
+    <Card placeholder={""} className="rounded-none shadow-none py-6">
       <h1 className="text-center font-semibold text-2xl">All Eye Glass </h1>
       <CardHeader
         placeholder={""}
@@ -210,19 +210,19 @@ const AllGlasses = () => {
         </div>
       </CardHeader>
       <CardBody placeholder={""} className="overflow-x-auto">
-        <table className="mt-4 w-full min-w-full text-left">
+        <table className="mt-4 w-full min-w-full text-center">
           <thead>
             <tr>
               {TABLE_HEAD.map((head, index) => (
                 <th
                   key={index}
-                  className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4"
+                  className="w-screen bg-blue-gray-50/50 p-3"
                 >
                   <Typography
                     placeholder={""}
                     variant="small"
                     color="blue-gray"
-                    className="font-normal leading-none opacity-70"
+                    className="font-semibold leading-none opacity-70"
                   >
                     {head}
                   </Typography>
