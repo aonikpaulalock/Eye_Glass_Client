@@ -56,7 +56,7 @@ const SalesModal = ({ id }: { id: string }) => {
       <Button
         placeholder={""}
         variant="filled"
-        color="orange"
+        color="indigo"
         className="py-2 px-3"
         onClick={handleOpen}
       >

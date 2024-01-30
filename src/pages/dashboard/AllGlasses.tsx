@@ -6,7 +6,6 @@ import {
   Typography,
   Button,
   CardBody,
-  Tooltip,
 } from "@material-tailwind/react";
 import { useDeleteManyEyeGlassMutation, useGetAllEyeGlassQuery } from "../../redux/features/product/eyeGlassApi";
 import { useState } from "react";
@@ -62,7 +61,6 @@ const AllGlasses = () => {
   };
 
   const TABLE_HEAD = [
-    <Tooltip content="Delete Glass">
       <Button
         placeholder={""}
         variant="gradient"
@@ -71,8 +69,7 @@ const AllGlasses = () => {
         onClick={handleDeleteMany}
       >
         Delete All
-      </Button>
-    </Tooltip>,
+      </Button>,
     "Product Name",
     "Price",
     "Quantity",

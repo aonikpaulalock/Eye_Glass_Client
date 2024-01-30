@@ -1,7 +1,6 @@
 import {
   Button,
   Checkbox,
-  Tooltip,
   Typography,
 } from "@material-tailwind/react";
 import fallbackImage from "../../assets/images/no-image.png";
@@ -164,7 +163,6 @@ const ProductCard: React.FC<
                 <UpdateModal id={_id} />
               </td>
               <td className={classes}>
-                <Tooltip content="Delete Glass">
                   <Button
                     placeholder={""}
                     variant="gradient"
@@ -177,7 +175,6 @@ const ProductCard: React.FC<
                     </svg>
 
                   </Button>
-                </Tooltip>
               </td>
               <td className={classes}>
                 <SalesModal id={_id} />
