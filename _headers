@@ -1,0 +1,4 @@
+/*
+  Access-Control-Allow-Origin: https://silly-sundae-0a228d.netlify.app
+  Access-Control-Allow-Methods: GET, POST, PUT, DELETE
+  Access-Control-Allow-Headers: Content-Type
