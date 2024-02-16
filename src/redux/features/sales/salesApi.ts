@@ -26,4 +26,4 @@ const salesApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useGetAllSalesQuery } = salesApi;
+export const { useGetAllSalesQuery, useGetSaleQuery } = salesApi;
