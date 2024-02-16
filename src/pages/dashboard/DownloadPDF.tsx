@@ -7,14 +7,14 @@ import {
 } from "@material-tailwind/react";
 import { useRef, useState } from "react";
 import fallbackImage from "../../assets/images/no-image.png";
-import { useGetAllSalesQuery } from "../../redux/features/sales/salesApi";
 import moment from "moment";
 import { useReactToPrint } from "react-to-print";
+import { useGetSaleQuery } from "../../redux/features/sales/salesApi";
 
 const DownloadPDF = ({ id }: { id: string }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(!open);
-  const { data: saleData } = useGetAllSalesQuery(id);
+  const { data: saleData } = useGetSaleQuery(id);
   console.log({ saleData });
   const componentRef = useRef<HTMLDivElement>(null);
   const handlePrint = useReactToPrint({
@@ -53,11 +53,8 @@ const DownloadPDF = ({ id }: { id: string }) => {
               </div>
               <div className="text-right">
                 <p>Eye Glass Inc.</p>
-                <p className="text-gray-500 text-sm">support@eyeglass.com</p>
-                <p className="text-gray-500 text-sm mt-1">+880 1722-142333</p>
-                <p className="text-gray-500 text-sm mt-1">
-                  VAT: +880 1722-142333
-                </p>
+                <p className="text-gray-500 text-sm">{saleData?.data?.buyerName}</p>
+                <p className="text-gray-500 text-sm mt-1">{saleData?.data?.userEmail}</p>
               </div>
             </div>
             <div className="grid grid-cols-2 mt-8">
