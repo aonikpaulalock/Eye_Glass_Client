@@ -6,7 +6,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { useRef, useState } from "react";
-import fallbackImage from "../../assets/no-image.png";
+import fallbackImage from "../../assets/images/no-image.png";
 import { useGetAllSalesQuery } from "../../redux/features/sales/salesApi";
 import moment from "moment";
 import { useReactToPrint } from "react-to-print";

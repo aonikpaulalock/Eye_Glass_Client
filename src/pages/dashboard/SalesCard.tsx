@@ -1,5 +1,6 @@
 import { Typography } from "@material-tailwind/react";
 import fallbackImage from "../../assets/images/no-image.png";
+import DownloadPDF from "./DownloadPDF";
 
 type TSales = {
   _id: string;
@@ -115,6 +116,9 @@ const SalesCard = ({ sales }: Tprops) => {
                 >
                   {quantity || "Not Found"}
                 </Typography>
+              </td>
+              <td className={classes}>
+                <DownloadPDF id={_id} />
               </td>
             </tr>
           );
