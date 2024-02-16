@@ -27,7 +27,12 @@ const SalesModal = ({ id }: { id: string }) => {
     try {
       const productQuantity = Number(data.quantity);
       const { productId, buyerName } = data;
-      const sellData = { productId, buyerName, quantity: productQuantity, userEmail: user?.email, };
+      const sellData = {
+        productId,
+        buyerName,
+        quantity: productQuantity,
+        userEmail: user?.email,
+      };
       if (!buyerName || !productQuantity) {
         toast.error("Please provide valid value", {
           id: toastId,
