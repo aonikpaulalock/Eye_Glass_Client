@@ -5,6 +5,7 @@ import Register from "../pages/Register";
 import AddGlass from "../pages/dashboard/AddGlass";
 import AllGlasses from "../pages/dashboard/AllGlasses";
 import SalesHistory from "../pages/dashboard/SalesHistory";
+import Dashboard from "../pages/dashboard/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -12,8 +13,8 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        index: true,
-        element: <AddGlass />,
+        path: "",
+        element: <Dashboard />,
       },
       {
         path: "add-product",

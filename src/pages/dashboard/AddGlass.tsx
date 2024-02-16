@@ -3,6 +3,8 @@ import { FieldValues, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { useAddEyeGlassMutation } from "../../redux/features/product/eyeGlassApi";
 import Loading from "../../utils/Loading";
+import { useAppSelector } from "../../redux/hooks";
+import { selectCurrentUser } from "../../redux/features/auth/authSlice";
 const imageBb_Api = "ab44083a680f1ff8d7a143435888c291";
 
 const AddGlass = () => {
@@ -10,6 +12,7 @@ const AddGlass = () => {
 
   const { register, handleSubmit, reset } = useForm();
   const [addGlass, { isLoading }] = useAddEyeGlassMutation();
+  const user = useAppSelector(selectCurrentUser);
 
   if (isLoading) {
     return <Loading />
@@ -52,6 +55,7 @@ const AddGlass = () => {
               brand,
               gender,
               color,
+              userEmail: user?.email,
             };
             await addGlass(glassData);
             toast.success("Product added successfully!", {

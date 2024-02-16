@@ -5,9 +5,15 @@ const baseQuery = fetchBaseQuery({
   credentials: "include",
 });
 
+
+// const baseQuery = fetchBaseQuery({
+//   baseUrl: "http://localhost:5000/api",
+//   credentials: "include",
+// });
+
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: baseQuery,
-  tagTypes: ["all-glasses"],
+  tagTypes: ["all-glasses", "sales"],
   endpoints: () => ({}),
 });

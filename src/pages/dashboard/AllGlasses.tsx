@@ -11,6 +11,8 @@ import { useDeleteManyEyeGlassMutation, useGetAllEyeGlassQuery } from "../../red
 import { useState } from "react";
 import ProductCard from "./ProductCard";
 import Loading from "../../utils/Loading";
+import { useAppSelector } from "../../redux/hooks";
+import { selectCurrentUser } from "../../redux/features/auth/authSlice";
 
 const AllGlasses = () => {
   const [material, setMaterial] = useState("");
@@ -24,6 +26,7 @@ const AllGlasses = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [productsId, setProductsId] = useState<string[]>([]);
   const [deletedAll] = useDeleteManyEyeGlassMutation();
+  const user = useAppSelector(selectCurrentUser);
   const query = {
     material,
     shape,
@@ -34,6 +37,8 @@ const AllGlasses = () => {
     minPrice,
     maxPrice,
     searchTerm,
+    email: user?.email,
+    role: user?.role,
   };
   const { data: eyeGlasses, isLoading } = useGetAllEyeGlassQuery(query);
 
@@ -61,15 +66,15 @@ const AllGlasses = () => {
   };
 
   const TABLE_HEAD = [
-      <Button
-        placeholder={""}
-        variant="gradient"
-        color="red"
-        className="py-2 px-3"
-        onClick={handleDeleteMany}
-      >
-        Delete All
-      </Button>,
+    <Button
+      placeholder={""}
+      variant="gradient"
+      color="red"
+      className="py-2 px-3"
+      onClick={handleDeleteMany}
+    >
+      Delete All
+    </Button>,
     "Product Name",
     "Price",
     "Quantity",
