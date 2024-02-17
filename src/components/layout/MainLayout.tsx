@@ -4,10 +4,16 @@ import Sidebar from "./Sidebar";
 const MainLayout = () => {
   return (
     <div>
-      <div className="flex h-screen w-full">
+      {/* <div className="flex h-screen w-full">
         <Sidebar />
-        <div className="flex-1 sticky top-0 left-0 bottom-0">
+        <div className="flex-1">
             <Outlet />
+        </div>
+      </div> */}
+      <div style={{ display: 'flex', height: '100%', width: '100%' }}>
+        <Sidebar  />
+        <div style={{ flex: '1', marginLeft: '200px', overflowY: 'auto' }}>
+          <Outlet />
         </div>
       </div>
     </div>
