@@ -19,8 +19,8 @@ const Sidebar = () => {
     dispatch(logout());
     toast.success("Logged out", { id: toastId, duration: 2000 });
   };
+
   return (
-    <div  style={{ flex: '0 0 auto', position: 'fixed', height: '100%', overflowY: 'auto' }}>
       <Card
         placeholder={""}
         className="bg-blue-gray-900 h-screen w-6/12 max-w-[20rem] p-4 rounded-none"
@@ -62,7 +62,6 @@ const Sidebar = () => {
           </ListItem>
         </List>
       </Card>
-    </div>
   );
 };
 
