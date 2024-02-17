@@ -72,6 +72,7 @@ const AllGlasses = () => {
       color="red"
       className="py-2 px-3"
       onClick={handleDeleteMany}
+      disabled={!productsId[0]}
     >
       Delete All
     </Button>,
